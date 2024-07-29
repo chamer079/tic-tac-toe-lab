@@ -37,9 +37,10 @@ console.log(messageEl)
 function init(){       
     console.log("sanity check")
     board =
-        ["x", "o", "", 
-        "", "", "",  
-        "", "", ""]
+        ["x", "x", "x", 
+        "x", "x", "x",  
+        "x", "x", "x"]
+        console.log(board)
         turn = "x"
         winner = false
         tie = false     
@@ -61,8 +62,7 @@ function render(){
 function updateBoard(){
     board.forEach((square, idx) => {
         squareEls[idx].style.fontSize = "75px"
-        // console.log(squareEls)
-// console.log(square)
+
         if(square === "x"){
             squareEls[idx].textContent = "x"
             console.log("test if", idx)
@@ -72,6 +72,8 @@ function updateBoard(){
         }else{
             squareEls[idx].textContent = ""
         }
+
+        squareEls[idx].addEventListener("click", handleClick)
     })
 }
 
@@ -85,8 +87,15 @@ function updateMessage(){
         return("your a winner!")
     }
 }
+
+function placePiece(index){
+    
+}
 /*----------------------------- Event Listeners -----------------------------*/
 //6) Handle a player clicking a square with a `handleClick` function.
+function handleClick(event){
+    placePiece(squareIndex)
+}
 
 //7) Create Reset functionality.
 
