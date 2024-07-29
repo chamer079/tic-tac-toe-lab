@@ -34,7 +34,7 @@ function init(){
         winner = false
         tie = false     
         
-        console.log("LOOK AT ME!!!!") //<- not showing below render()...?
+        // console.log("LOOK AT ME!!!!") //<- not showing below render()...?
         render()
     }
     
@@ -50,21 +50,19 @@ function render(){
 
 function updateBoard(){
     board.forEach((square, idx) => {
-        // square[idx].style.backgroundColor = "red"
-        // square[idx].style.fontSize = "20px"
+        squareEls[idx].style.fontSize = "75px"
         // console.log(squareEls)
 console.log(square)
         if(square === "x"){
-            square[idx].textContent = "x"
-            console.log("test if", square)
+            squareEls[idx].textContent = "x"
+            console.log("test if", idx)
         }else if(square === "o"){
-            square[idx].textContent = "o"
-            console.log("test else if", square)
+            squareEls[idx].textContent = "o"
+            console.log("esle if test", square)
         }else{
-            square[idx].textContent = ""
+            squareEls[idx].textContent = ""
         }
     })
-    // console.log("hi world")
 }
 
 
