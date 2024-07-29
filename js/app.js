@@ -1,6 +1,16 @@
 /*-------------------------------- Constants --------------------------------*/
 //5) Define the required constants.
-
+const winningCombos = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 0],
+    [2, 3, 4],
+    [5, 6, 7]
+]
+console.log(winningCombos)
 
 /*---------------------------- Variables (state) ----------------------------*/
 //1) Define the required variables used to track the state of the game. -Done
@@ -52,7 +62,7 @@ function updateBoard(){
     board.forEach((square, idx) => {
         squareEls[idx].style.fontSize = "75px"
         // console.log(squareEls)
-console.log(square)
+// console.log(square)
         if(square === "x"){
             squareEls[idx].textContent = "x"
             console.log("test if", idx)
