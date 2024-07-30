@@ -26,7 +26,7 @@ const squareEls = document.querySelectorAll(".sqr")
 const messageEl = document.querySelector("#message")
 const squareIndex= document.querySelector(".board")
 console.log(squareIndex)
-console.log(messageEl)
+// console.log(messageEl)
 
 /*-------------------------------- Functions --------------------------------*/
 //3) Upon loading, the game state should be initialized, and a function should 
@@ -35,11 +35,11 @@ console.log(messageEl)
 //4) The state of the game should be rendered to the user.
 
 function init(){       
-    console.log("sanity check")
+    // console.log("sanity check")
     board =
-        ["x", "x", "x", 
-        "x", "x", "x",  
-        "x", "x", "x"]
+        ["x", "o", "", 
+        "", "", "",  
+        "", "", ""]
         console.log(board)
         turn = "x"
         winner = false
@@ -60,18 +60,18 @@ function init(){
     function updateBoard(){
         board.forEach((square, idx) => {
             squareEls[idx].style.fontSize = "75px"
+            // squareEls[idx].addEventListener("click", handleClick)  //<- Not sure is 6 option 1 goes here?
             
             if(square === "x"){
                 squareEls[idx].textContent = "x"
-                console.log("test if", idx)
+                console.log("test if", square, idx)
             }else if(square === "o"){
                 squareEls[idx].textContent = "o"
-                console.log("esle if test", square)
+                console.log("esle if test", square, idx)
             }else{
                 squareEls[idx].textContent = ""
             }
             
-            squareEls[idx].addEventListener("click", handleClick)
         })
     }
     
@@ -86,15 +86,27 @@ function init(){
         }
     }
     
-    function placePiece(index){
-        
-    }
+   
     /*----------------------------- Event Listeners -----------------------------*/
     //6) Handle a player clicking a square with a `handleClick` function.
-    function handleClick(event){
-        placePiece(squareIndex)
-    }
+ function handleClick(event){
+    squareEls.forEach((square) => {
+        square.addEventListener("click", handleClick)
+    })
+    console.log(event.target, "was clicked") //<-why does  typerror can't read property of undefined -target?
+ }
 
+
+        // if(squareIndex === "x" || squareIndex === "o"){
+        //     return handleClick
+        //     // return (squareIndex.textContent("This square is already taken. Please choose (but choose wisely) another square."))
+        // }else if(winner === true){
+        //     return
+        //     // return ("Game Over")
+        // }
+    
+handleClick()
+// console.log(handleClick)
 //7) Create Reset functionality.
 
 
