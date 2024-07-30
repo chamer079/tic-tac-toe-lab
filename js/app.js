@@ -4,11 +4,11 @@ const winningCombos = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 0],
-    [2, 3, 4],
-    [5, 6, 7]
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
 ]
 console.log(winningCombos)
 
@@ -24,8 +24,8 @@ let tie
 //2) Store cached element references.
 const squareEls = document.querySelectorAll(".sqr")
 const messageEl = document.querySelector("#message")
-
-console.log(squareEls)
+const squareIndex= document.querySelector(".board")
+console.log(squareIndex)
 console.log(messageEl)
 
 /*-------------------------------- Functions --------------------------------*/
@@ -45,57 +45,55 @@ function init(){
         winner = false
         tie = false     
         
-        // console.log("LOOK AT ME!!!!") //<- not showing below render()...?
         render()
     }
     
-init()
-
-
-function render(){
-    console.log("render test")  //<- not showing below callbacks...?
-    updateBoard()
-    updateMessage()
-}
-
-
-function updateBoard(){
-    board.forEach((square, idx) => {
-        squareEls[idx].style.fontSize = "75px"
-
-        if(square === "x"){
-            squareEls[idx].textContent = "x"
-            console.log("test if", idx)
-        }else if(square === "o"){
-            squareEls[idx].textContent = "o"
-            console.log("esle if test", square)
-        }else{
-            squareEls[idx].textContent = ""
-        }
-
-        squareEls[idx].addEventListener("click", handleClick)
-    })
-}
-
-
-function updateMessage(){
-    if(winner === false && tie === false){
-        return ("your turn")
-    }else if(winner === false && tie === true){
-        return("the game is a tie")
-    }else{
-        return("your a winner!")
-    }
-}
-
-function placePiece(index){
+    init()
     
-}
-/*----------------------------- Event Listeners -----------------------------*/
-//6) Handle a player clicking a square with a `handleClick` function.
-function handleClick(event){
-    placePiece(squareIndex)
-}
+    
+    function render(){
+        updateBoard()
+        updateMessage()
+    }
+    
+    
+    function updateBoard(){
+        board.forEach((square, idx) => {
+            squareEls[idx].style.fontSize = "75px"
+            
+            if(square === "x"){
+                squareEls[idx].textContent = "x"
+                console.log("test if", idx)
+            }else if(square === "o"){
+                squareEls[idx].textContent = "o"
+                console.log("esle if test", square)
+            }else{
+                squareEls[idx].textContent = ""
+            }
+            
+            squareEls[idx].addEventListener("click", handleClick)
+        })
+    }
+    
+    
+    function updateMessage(){
+        if(winner === false && tie === false){
+            return ("your turn")
+        }else if(winner === false && tie === true){
+            return("the game is a tie")
+        }else{
+            return("your a winner!")
+        }
+    }
+    
+    function placePiece(index){
+        
+    }
+    /*----------------------------- Event Listeners -----------------------------*/
+    //6) Handle a player clicking a square with a `handleClick` function.
+    function handleClick(event){
+        placePiece(squareIndex)
+    }
 
 //7) Create Reset functionality.
 
