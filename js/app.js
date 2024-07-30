@@ -60,8 +60,14 @@ function init(){
     function updateBoard(){
         board.forEach((square, idx) => {
             squareEls[idx].style.fontSize = "75px"
-            // squareEls[idx].addEventListener("click", handleClick)  //<- Not sure is 6 option 1 goes here?
-            
+            squareEls[idx].addEventListener("click", (handleClick) => {
+                console.log(squareEls[idx], "was clicked")
+
+                if(squareEls[idx] === "x" || squareEls[idx] === "o"){
+                    return squareEls[idx].disabled === true
+                }
+            })
+                        
             if(square === "x"){
                 squareEls[idx].textContent = "x"
                 console.log("test if", square, idx)
@@ -90,21 +96,12 @@ function init(){
     /*----------------------------- Event Listeners -----------------------------*/
     //6) Handle a player clicking a square with a `handleClick` function.
  function handleClick(event){
-    squareEls.forEach((square) => {
-        square.addEventListener("click", handleClick)
-    })
-    console.log(event.target, "was clicked") //<-why does  typerror can't read property of undefined -target?
- }
-
-
-        // if(squareIndex === "x" || squareIndex === "o"){
-        //     return handleClick
-        //     // return (squareIndex.textContent("This square is already taken. Please choose (but choose wisely) another square."))
-        // }else if(winner === true){
-        //     return
-        //     // return ("Game Over")
-        // }
+ 
     
+}
+
+
+
 handleClick()
 // console.log(handleClick)
 //7) Create Reset functionality.
