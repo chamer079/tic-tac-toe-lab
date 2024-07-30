@@ -24,7 +24,7 @@ let tie
 //2) Store cached element references.
 const squareEls = document.querySelectorAll(".sqr")
 const messageEl = document.querySelector("#message")
-const squareIndex= document.querySelector(".board")
+const squareIndex = document.querySelector(".board")
 console.log(squareIndex)
 // console.log(messageEl)
 
@@ -46,69 +46,65 @@ function init(){
         tie = false     
         
         render()
-    }
+}
     
-    init()
-    
-    
-    function render(){
-        updateBoard()
-        updateMessage()
-    }
+init()
     
     
-    function updateBoard(){
-        board.forEach((square, idx) => {
-            squareEls[idx].style.fontSize = "75px"
-            squareEls[idx].addEventListener("click", (handleClick) => {
-                console.log(squareEls[idx], "was clicked")
-
-                if(squareEls[idx] === "x" || squareEls[idx] === "o"){
-                    return squareEls[idx].disabled === true
-                }
-            })
-                        
-            if(square === "x"){
-                squareEls[idx].textContent = "x"
-                console.log("test if", square, idx)
-            }else if(square === "o"){
-                squareEls[idx].textContent = "o"
-                console.log("esle if test", square, idx)
-            }else{
-                squareEls[idx].textContent = ""
-            }
+function render(){
+    updateBoard()
+    updateMessage()
+}
+    
+function updateBoard(){
+    board.forEach((square, idx) => {
+        squareEls[idx].style.fontSize = "75px"
             
-        })
-    }
-    
-    
-    function updateMessage(){
-        if(winner === false && tie === false){
-            return ("your turn")
-        }else if(winner === false && tie === true){
-            return("the game is a tie")
+        if(square === "x"){
+            squareEls[idx].textContent = "x"
+            console.log("test if", square, idx)
+        }else if(square === "o"){
+            squareEls[idx].textContent = "o"
+            console.log("esle if test", square, idx)
         }else{
-            return("your a winner!")
+            squareEls[idx].textContent = ""
         }
+            
+    })
+}
+    
+function updateMessage(){
+    if(winner === false && tie === false){
+        return ("your turn")
+    }else if(winner === false && tie === true){
+        return("the game is a tie")
+    }else{
+        return("your a winner!")
     }
-    
-   
-    /*----------------------------- Event Listeners -----------------------------*/
-    //6) Handle a player clicking a square with a `handleClick` function.
- function handleClick(event){
- 
-    
 }
 
+function placePiece(index){
+    board[squareIndex] = turn
+  
+
+}
+    
+    
+/*----------------------------- Event Listeners -----------------------------*/
+//6) Handle a player clicking a square with a `handleClick` function.
+function handleClick(event){       
+    console.log(event.target, "was clicked")
+    
+    if(board[squareIndex] === "x" || board[squareIndex] === "o" || winner === true){
+        return
+    }
+}
+
+squareEls.forEach((square) => {
+    square.addEventListener("click", handleClick)     
+    })
+    
 
 
-handleClick()
-// console.log(handleClick)
 //7) Create Reset functionality.
-
-
-
-
-
-
-
+    
