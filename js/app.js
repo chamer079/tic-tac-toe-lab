@@ -86,6 +86,19 @@ function placePiece(index){
     board[index] = turn 
     console.log(`${turn} was places on ${index} square`)
 }
+
+function checkForWinner(){
+    winningCombos.forEach((combo) => {
+       const [a, b, c] = combo
+
+       if(board[a] !== "" && board[a] === board[b] && board[a] === board [c]){
+        return winner = true
+       }else{
+        return winner = false
+       }
+       
+    })
+}
     
     
 /*----------------------------- Event Listeners -----------------------------*/
@@ -98,7 +111,8 @@ function handleClick(event){
     }
 
     placePiece(squareIndex)
-    console.log(board)
+    // console.log(board[squareIndex], "click test")
+    checkForWinner()
 }
 
 squareEls.forEach((square) => {
