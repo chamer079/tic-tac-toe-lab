@@ -37,7 +37,7 @@ console.log(squareIndex)
 function init(){       
     // console.log("sanity check")
     board =
-        ["x", "o", "", 
+        ["", "", "", 
         "", "", "",  
         "", "", ""]
         console.log(board)
@@ -47,7 +47,6 @@ function init(){
         
         render()
 }
-    
 init()
     
     
@@ -84,9 +83,8 @@ function updateMessage(){
 }
 
 function placePiece(index){
-    board[squareIndex] = turn
-  
-
+    board[index] = turn 
+    console.log(`${turn} was places on ${index} square`)
 }
     
     
@@ -98,6 +96,9 @@ function handleClick(event){
     if(board[squareIndex] === "x" || board[squareIndex] === "o" || winner === true){
         return
     }
+
+    placePiece(squareIndex)
+    console.log(board)
 }
 
 squareEls.forEach((square) => {
