@@ -20,13 +20,15 @@ let tie
 
 
 /*------------------------ Cached Element References ------------------------*/
-//Step 2: Store cached element references.
+//Step 2: Store cached element references. -Done
 const squareEls = document.querySelectorAll(".sqr")
 // console.log(squareEls)
 const messageEl = document.querySelector("#message")
 // console.log(messageEl)
 const squareIndex = document.querySelector(".board")    //6.c: get the idx for an id assigned to the target el in the HTML - assign this to a const called squareIndex
 // console.log(squareIndex)
+const resetBtnEl = document.querySelector("#reset") // 7.c:store cache element of the reset button  
+console.log(resetBtnEl) 
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -41,6 +43,9 @@ function init(){
     tie = false     // 3.f: set tie to false - board arr has empty strings
         
     render()    // 3.g
+
+    //Step 7.c: Create Reset functionality
+    // resetBtnEl.addEventListener("click", event)
 }
 init()
     
@@ -125,7 +130,7 @@ function switchPlayerTurn(){    // 6.4a: create switchPlayerTurn function
     
     
 /*----------------------------- Event Listeners -----------------------------*/
-//Step 6: Handle a player clicking a square with a `handleClick` function.
+//Step 6: Handle a player clicking a square with a `handleClick` function.  -Done
 function handleClick(event){        // 6.a: create a handleClick function          
     if(board[event.target.id] === "x" || board[event.target.id] === "o" || winner === true){    //6.d: 1)if board has 'x' or 'o' at squareIndex position -return out of handleClick 2)winner = true - return out of handleClick
         // console.log("sanity check")
@@ -145,5 +150,5 @@ squareEls.forEach((square) => {
     }) 
 
 
-//7) Create Reset functionality.
+
     
