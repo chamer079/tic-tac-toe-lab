@@ -84,7 +84,7 @@ function updateMessage(){
 
 function placePiece(index){
     board[index] = turn 
-    console.log(`${turn} was places on ${index} square`)
+    // console.log(`${turn} was places on ${index} square`)
 }
 
 function checkForWinner(){
@@ -99,6 +99,14 @@ function checkForWinner(){
        
     })
 }
+
+function checkForTie(){
+    if(board[squareIndex] === ""){
+        return tie = false
+    }else{
+        return tie = true
+    }
+}
     
     
 /*----------------------------- Event Listeners -----------------------------*/
@@ -111,8 +119,8 @@ function handleClick(event){
     }
 
     placePiece(squareIndex)
-    // console.log(board[squareIndex], "click test")
     checkForWinner()
+    checkForTie()
 }
 
 squareEls.forEach((square) => {
