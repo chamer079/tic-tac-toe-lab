@@ -57,10 +57,10 @@ function updateBoard(){
             
         if(square === "x"){
             squareEls[idx].textContent = "x"
-            console.log("test if", square, idx)
+            // console.log("test if", square, idx)
         }else if(square === "o"){
             squareEls[idx].textContent = "o"
-            console.log("esle if test", square, idx)
+            // console.log("esle if test", square, idx)
         }else{
             squareEls[idx].textContent = ""
         }
@@ -69,17 +69,26 @@ function updateBoard(){
 }
     
 function updateMessage(){
+    // console.log("updateMessage is up")
     if(winner === false && tie === false){
-        return ("your turn")
+        // messageEl.textContent = "Better luck next time."
+        console.log("loss")
     }else if(winner === false && tie === true){
-        return("the game is a tie")
+        messageEl.textContent = "The game is tied. Want to try again?"
+        console.log("tie")
+
     }else{
-        return("your a winner!")
+        messageEl.textContent = "You're a winner!"
+        console.log("win")
+
     }
 }
 
 function placePiece(index){
     board[index] = turn 
+    // console.log(board)
+    // console.log(index)
+    
 }
 
 function checkForWinner(){
@@ -119,24 +128,22 @@ function switchPlayerTurn(){
     
 /*----------------------------- Event Listeners -----------------------------*/
 //6) Handle a player clicking a square with a `handleClick` function.
-function handleClick(event){       
-    console.log(event.target, "was clicked")
-    console.log(board)
-    
-    if(board[squareIndex] === "x" || board[squareIndex] === "o" || winner === true){
+function handleClick(event){          
+    if(board[event.target.id] === "x" || board[event.target.id] === "o" || winner === true){
+        console.log("sanity check")
         return
     }
 
-    placePiece(squareIndex)
+    placePiece(event.target.id)
     checkForWinner()
     checkForTie()
     switchPlayerTurn()
+    render()
 }
 
 squareEls.forEach((square) => {
     square.addEventListener("click", handleClick)     
-    })
-    
+    }) 
 
 
 //7) Create Reset functionality.
