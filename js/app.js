@@ -71,15 +71,14 @@ function updateBoard(){
 function updateMessage(){
     // console.log("updateMessage is up")
     if(winner === false && tie === false){
-        // messageEl.textContent = "Better luck next time."
-        console.log("loss")
+        messageEl.textContent = `Its ${turn}'s turn.`
+        // console.log("loss")
     }else if(winner === false && tie === true){
         messageEl.textContent = "The game is tied. Want to try again?"
-        console.log("tie")
-
+        // console.log("tie")
     }else{
         messageEl.textContent = "You're a winner!"
-        console.log("win")
+        // console.log("win")
 
     }
 }
@@ -95,7 +94,7 @@ function checkForWinner(){
     winningCombos.forEach((combo) => {
        const [a, b, c] = combo
 
-       if(board[a] !== "" && board[a] === board[b] && board[a] === board [c]){
+       if(board[combo[a]] !== "" && board[combo[a]] === board[combo[b]] && board[combo[a]] === board[combo[c]]){
         return winner = true
        }else{
         return winner = false
@@ -130,7 +129,7 @@ function switchPlayerTurn(){
 //6) Handle a player clicking a square with a `handleClick` function.
 function handleClick(event){          
     if(board[event.target.id] === "x" || board[event.target.id] === "o" || winner === true){
-        console.log("sanity check")
+        // console.log("sanity check")
         return
     }
 
