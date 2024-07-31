@@ -10,7 +10,6 @@ const winningCombos = [
     [0, 4, 8],
     [2, 4, 6]
 ]
-console.log(winningCombos)
 
 /*---------------------------- Variables (state) ----------------------------*/
 //1) Define the required variables used to track the state of the game. -Done
@@ -25,8 +24,7 @@ let tie
 const squareEls = document.querySelectorAll(".sqr")
 const messageEl = document.querySelector("#message")
 const squareIndex = document.querySelector(".board")
-console.log(squareIndex)
-// console.log(messageEl)
+
 
 /*-------------------------------- Functions --------------------------------*/
 //3) Upon loading, the game state should be initialized, and a function should 
@@ -35,17 +33,15 @@ console.log(squareIndex)
 //4) The state of the game should be rendered to the user.
 
 function init(){       
-    // console.log("sanity check")
     board =
         ["", "", "", 
         "", "", "",  
         "", "", ""]
-        console.log(board)
-        turn = "x"
-        winner = false
-        tie = false     
+    turn = "x"
+    winner = false
+    tie = false     
         
-        render()
+    render()
 }
 init()
     
@@ -84,7 +80,6 @@ function updateMessage(){
 
 function placePiece(index){
     board[index] = turn 
-    // console.log(`${turn} was places on ${index} square`)
 }
 
 function checkForWinner(){
@@ -96,8 +91,8 @@ function checkForWinner(){
        }else{
         return winner = false
        }
-       
     })
+    // console.log(winner)
 }
 
 function checkForTie(){
@@ -107,12 +102,26 @@ function checkForTie(){
         return tie = true
     }
 }
+
+function switchPlayerTurn(){
+    if(winner === false){
+        if(turn === "x"){
+            turn = "o"
+        }else{
+            turn = "x"
+        }
+    }else{
+        return
+    }
+    console.log(turn)
+}
     
     
 /*----------------------------- Event Listeners -----------------------------*/
 //6) Handle a player clicking a square with a `handleClick` function.
 function handleClick(event){       
     console.log(event.target, "was clicked")
+    console.log(board)
     
     if(board[squareIndex] === "x" || board[squareIndex] === "o" || winner === true){
         return
@@ -121,6 +130,7 @@ function handleClick(event){
     placePiece(squareIndex)
     checkForWinner()
     checkForTie()
+    switchPlayerTurn()
 }
 
 squareEls.forEach((square) => {
