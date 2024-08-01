@@ -45,7 +45,7 @@ function init(){
     render()    // 3.g
 
     //Step 7.c: Create Reset functionality
-    // resetBtnEl.addEventListener("click", event)
+    resetBtnEl.addEventListener("click", init)
 }
 init()
     
@@ -95,24 +95,32 @@ function placePiece(index){     // 6.1a: create a placePiece function that accep
 }
 
 function checkForWinner(){      // 6.2a: create a checkForWinner function
-    winningCombos.forEach((combo) => {  //6.2 Option 2: loop through each winning combo in winningCombos arr/ 
-        const [a, b, c] = combo     // 6.2 Option 2: use the 3 values in ea combo to retrieve the values held in those index positions of the board arr
-
-       if(board[combo[a]] !== "" && board[combo[a]] === board[combo[b]] && board[combo[a]] === board[combo[c]]){
-        return winner = true
-       }else{
-        return winner = false
-       }
+        winningCombos.forEach((combo) => {
+       
+            if(board[combo[0]] !== "" && board[combo[0]] === board[combo[1]] && board[combo[0]] === board[combo[2]]){
+               winner = true
+            }
     })
-    // console.log(winner)
+   
+
+    console.log(winner)
 }
 
 function checkForTie(){     // 6.3a create checkForTie function
-    if(board[squareIndex] === ""){      // 6.3b: if there is a winner - return out of function
-        return tie = false              // 6.3c: check if board arr contains any empty "" - if so, leave ties = flase - otherwise tie = true
-    }else{
-        return tie = true
+    if(winner === true){
+        if(board[squareIndex] === ""){      // 6.3b: if there is a winner - return out of function
+            return tie = false              // 6.3c: check if board arr contains any empty "" - if so, leave ties = flase - otherwise tie = true
+        }else{
+            return tie = true
+        }       
+ 
+        return
     }
+    
+    
+    
+    
+    
 }
 
 function switchPlayerTurn(){    // 6.4a: create switchPlayerTurn function
