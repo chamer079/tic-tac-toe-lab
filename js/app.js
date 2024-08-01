@@ -22,13 +22,10 @@ let tie
 /*------------------------ Cached Element References ------------------------*/
 //Step 2: Store cached element references. -Done
 const squareEls = document.querySelectorAll(".sqr")
-// console.log(squareEls)
 const messageEl = document.querySelector("#message")
-// console.log(messageEl)
-const squareIndex = document.querySelector(".board")    //6.c: get the idx for an id assigned to the target el in the HTML - assign this to a const called squareIndex
-// console.log(squareIndex)
+//6.c: get the idx for an id assigned to the target el in the HTML - assign this to a const called squareIndex
+const squareIndex = document.querySelector(".board")    
 const resetBtnEl = document.querySelector("#reset") // 7.c:store cache element of the reset button  
-console.log(resetBtnEl) 
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -61,10 +58,8 @@ function updateBoard(){     // 4.b: create updateBoard function
             
         if(square === "x"){     
             squareEls[idx].textContent = "x"
-            // console.log("test if", square, idx)
         }else if(square === "o"){
             squareEls[idx].textContent = "o"
-            // console.log("esle if test", square, idx)
         }else{
             squareEls[idx].textContent = ""
         }
@@ -73,37 +68,26 @@ function updateBoard(){     // 4.b: create updateBoard function
 }
     
 function updateMessage(){       // 4.d: create updateMessage function
-    // console.log("updateMessage is up")
     if(winner === false && tie === false){      // 4.e: render a msg based on the current game state -> 1)if both winner & tie = false - render whose turn it is
         messageEl.textContent = `Its ${turn}'s turn.`
-        // console.log("game on")
     }else if(winner === false && tie === true){     // 4.e: 2)if winner = false & tie = true -> render a tie message
         messageEl.textContent = "The game is tied. Want to try again?"
-        // console.log("gamnem is a tie")
     }else{
         messageEl.textContent = "You're a winner!"      // 4.e 3)otherwise, render congrats msg for the player who won
-        // console.log("win")
 
     }
 }
 
 function placePiece(index){     // 6.1a: create a placePiece function that accepts an index parameter
     board[index] = turn     // 6.1b: update board arr at the index to that it is = to the current value of turn 
-    // console.log(board)
-    // console.log(index)
-    
 }
 
 function checkForWinner(){      // 6.2a: create a checkForWinner function
         winningCombos.forEach((combo) => {
-       
             if(board[combo[0]] !== "" && board[combo[0]] === board[combo[1]] && board[combo[0]] === board[combo[2]]){
                winner = true
             }
     })
-   
-
-    console.log(winner)
 }
 
 function checkForTie(){     // 6.3a create checkForTie function
@@ -113,19 +97,13 @@ function checkForTie(){     // 6.3a create checkForTie function
         }else{
             return tie = true
         }       
- 
-        return
-    }
-    
-    
-    
-    
-    
+    return
+    }  
 }
 
 function switchPlayerTurn(){    // 6.4a: create switchPlayerTurn function
     if(winner === false){       // 6.4b: if winner = true - return out of function
-        if(turn === "x"){       // 6.4c: if winner = false - change the turn by checking the value of turn           
+        if(turn === "x"){  // 6.4c: if winner = false - change the turn by checking the value of turn           
             turn = "o"
         }else{
             turn = "x"
@@ -133,7 +111,6 @@ function switchPlayerTurn(){    // 6.4a: create switchPlayerTurn function
     }else{
         return
     }
-    console.log(turn)
 }
     
     
@@ -141,7 +118,6 @@ function switchPlayerTurn(){    // 6.4a: create switchPlayerTurn function
 //Step 6: Handle a player clicking a square with a `handleClick` function.  -Done
 function handleClick(event){        // 6.a: create a handleClick function          
     if(board[event.target.id] === "x" || board[event.target.id] === "o" || winner === true){    //6.d: 1)if board has 'x' or 'o' at squareIndex position -return out of handleClick 2)winner = true - return out of handleClick
-        // console.log("sanity check")
         return
     }
 
